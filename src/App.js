@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Shelf from './Shelf';
+import SearchForm from './SearchForm';
 import * as BooksAPI from './BooksAPI';
 import { Link } from 'react-router-dom'; 
 import { Route } from 'react-router-dom';
@@ -30,7 +31,10 @@ class App extends Component {
         ))}/>
         <Route path="/search" render={(() => (
             <div>
-              <Shelf category="None" books={this.state.books} />
+              <SearchForm />
+              <div>
+                <Shelf category="None" books={this.state.books} />
+              </div>
             </div>
         ))}/>
       </div>
