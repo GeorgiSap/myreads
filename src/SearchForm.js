@@ -24,7 +24,7 @@ class SearchForm extends Component {
     this.updateSearchBookResults(query);
   }
 
-    clearQuery = () => {
+  clearQuery = () => {
     this.setState({query : ''})
   }
 
@@ -38,7 +38,7 @@ class SearchForm extends Component {
                     <input 
                       type="text" 
                       placeholder="Search by title or author"
-                      value={this.state.query} 
+                      value={this.state.query}
                       onChange={(event) => this.updateQuery(event.target.value)}
                     />
                 </div>
@@ -46,7 +46,9 @@ class SearchForm extends Component {
             </div>
             <div className="search-books-results">
              {this.state.searchBookResults && this.state.searchBookResults.length > 0 &&
-                (<Books books= {this.state.searchBookResults} updateShelf={this.props.updateShelf} />)
+                (<Books books= {this.state.searchBookResults} 
+                        updateShelf={this.props.updateShelf} 
+                        getShelf={this.props.getShelf}/>)
               }
             </div>
         </div>
