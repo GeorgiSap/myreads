@@ -5,11 +5,14 @@ import Book from './Book';
 class Books extends Component {
 
 	render () {
+
+	const {books, getShelf, updateShelf} = this.props;
+
 		return (
 			<ol className="books-grid">
-				{this.props.books.map(book => (
-					<Book key={book.id} book={book} updateShelf={this.props.updateShelf} 
-					getShelf={this.props.getShelf}/>
+				{books.map(book => (
+					<Book key={book.id} book={book} updateShelf={updateShelf} 
+					getShelf={getShelf}/>
 				))}
 			</ol>
 		);

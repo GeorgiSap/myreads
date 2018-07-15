@@ -28,6 +28,9 @@ class SearchForm extends Component {
   }
 
 	render() {
+    const { getShelf, updateShelf } = this.props;
+    const { searchBookResults, query } = this.state;
+
 		return (
       <div>
             <div className="search-books">
@@ -37,17 +40,17 @@ class SearchForm extends Component {
                     <input 
                       type="text" 
                       placeholder="Search by title or author"
-                      value={this.state.query}
+                      value={query}
                       onChange={(event) => this.updateQuery(event.target.value)}
                     />
                 </div>
               </div>
             </div>
             <div className="search-books-results">
-             {this.state.searchBookResults && this.state.searchBookResults.length > 0 &&
-                (<Books books= {this.state.searchBookResults} 
-                        updateShelf={this.props.updateShelf} 
-                        getShelf={this.props.getShelf}/>)
+             {searchBookResults && searchBookResults.length > 0 &&
+                (<Books books= {searchBookResults} 
+                        updateShelf={updateShelf} 
+                        getShelf={getShelf}/>)
               }
             </div>
         </div>

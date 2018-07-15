@@ -13,15 +13,17 @@ class Book extends Component {
 	}
 
 	render () {
-		return ( <li key={this.props.book.id}>
+		const { book, updateShelf } = this.props;
+
+		return ( <li key={book.id}>
 		<div className="book">
 		<div className="book-top">
 		<div className="book-cover" style={{ width: 128, height: 192, 
-			backgroundImage: `url(${this.props.book.imageLinks ? this.props.book.imageLinks.thumbnail : ''})`}}>
+			backgroundImage: `url(${book.imageLinks ? book.imageLinks.thumbnail : ''})`}}>
 			</div>
 			<div className="book-shelf-changer">
-			<select onChange={event => this.props.updateShelf(event.target.value, this.props.book)}
-			onMouseEnter={event => this.getShelf(event.target.value, this.props.book)}
+			<select onChange={event => updateShelf(event.target.value, book)}
+			onMouseEnter={event => this.getShelf(event.target.value, book)}
 			value={this.state.shelf}
 			>
 			<option value="move" disabled>Move to...</option>
@@ -32,8 +34,8 @@ class Book extends Component {
 			</select>
 			</div>
 			</div>		
-			<div className="book-title">{this.props.book.title}</div>
-			<div className="book-authors">{this.props.book.author}</div>
+			<div className="book-title">{book.title}</div>
+			<div className="book-authors">{book.author}</div>
 			</div>
 			</li>
 			)
@@ -46,8 +48,7 @@ class Book extends Component {
       	title: PropTypes.string.isRequired,
       	author: PropTypes.array,
       	imageLinks: PropTypes.object
-
-    })
+    	})
 	}
 
 	export default Book;

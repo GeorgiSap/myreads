@@ -40,9 +40,11 @@ class App extends Component {
 
 
   getShelf = (selectedBook) => {
-    for (let index = 0; index < this.state.books.length; index++) {
-      if (this.state.books[index].id === selectedBook.id) {
-        return this.state.books[index].shelf;
+    const { books } = this.state;
+
+    for (let index = 0; index < books.length; index++) {
+      if (books[index].id === selectedBook.id) {
+        return books[index].shelf;
       }
     } 
   }
@@ -52,12 +54,14 @@ class App extends Component {
   }
 
   render() {
+    const { books } = this.state 
+
     let currentlyReading = [];
     let wantToRead = [];
     let read = [];
 
     if (global.location.pathname === '/') {
-      for (let book of this.state.books) {
+      for (let book of books) {
         switch(book.shelf) {
           case 'currentlyReading':
           currentlyReading.push(book);
