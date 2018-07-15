@@ -6,8 +6,8 @@
 
 - [Getting started](#getting-started)
 - [Screenshots](#screenshots)
-	* [Home Page](#homepage)
-	* [Search Page](#searchpage)
+	* [Home Page](#home-page)
+	* [Search Page](#search-page)
 - [Resources](#resources)
 
 ### Getting started
