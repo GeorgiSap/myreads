@@ -19,7 +19,7 @@ class SearchForm extends Component {
   }
 
   updateQueryString = (query) => {
-     this.setState({query: query})
+     this.setState({ query })
   }
 
   updateQuery = (query) => {

@@ -9,9 +9,7 @@ class Book extends Component {
 
 	getShelf = (value, book) => {
 		let shelf = this.props.getShelf(book)
-		this.setState({
-			shelf : shelf
-		});
+		this.setState({ shelf });
 	}
 
 	render () {
