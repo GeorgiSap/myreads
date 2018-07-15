@@ -6,28 +6,25 @@ class HomePage extends Component {
 	render() {
 		const {updateShelf, getShelf, books} = this.props;
 
-		let currentlyReading = [];
-		let wantToRead = [];
-		let read = [];
+		let currentlyReading = [],
+			wantToRead = [],
+			read = [];
 
 		for (let book of books) {
-			switch(book.shelf) {
-				case 'currentlyReading':
-					currentlyReading.push(book);
-					break;
-				case 'wantToRead':
-					wantToRead.push(book);
-					break;
-				case 'read':
-					read.push(book);
-					break;
-				default:
-					break;
-			} 
+			if (book.shelf === 'currentlyReading')
+				currentlyReading.push(book);
+			if (book.shelf === 'wantToRead')
+				wantToRead.push(book);
+			if (book.shelf === 'read')
+				read.push(book);
 		}
 
 		return (
-			<div>
+			<div className="list-books">
+	            <div className="list-books-title">
+              		<h1>MyReads</h1>
+            	</div>
+            	<div className="list-books-content">
 	            <Shelf category="Currently Reading" 
 	                   books={currentlyReading} 
 	                   updateShelf={updateShelf}
@@ -42,11 +39,11 @@ class HomePage extends Component {
 	                   books={read} 
 	                   updateShelf={updateShelf} 
 	                   getShelf={getShelf} />
-
+	            </div>      
 	            <div className="open-search">
 	              <Link to="/search">Add a book</Link>
-	            </div>
-            </div>
+              	</div>
+          	</div>
 		)
 	}
 }
