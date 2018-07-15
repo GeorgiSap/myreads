@@ -27,10 +27,6 @@ class SearchForm extends Component {
     this.updateSearchBookResults(query);
   }
 
-  clearQuery = () => {
-    this.setState({query : ''})
-  }
-
 	render() {
 		return (
       <div>
