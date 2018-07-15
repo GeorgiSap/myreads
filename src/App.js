@@ -10,6 +10,10 @@ class App extends Component {
     books : []
   }
 
+  /**
+  * @description Adds book to the books state
+  * @param {object} book
+  */
   addBook = book => {
     this.setState(prevState => ({
           books : prevState.books.concat(book)
@@ -17,6 +21,10 @@ class App extends Component {
     )
   }
 
+ /**
+  * @description Removes book from the books state
+  * @param {object} book
+  */
   removeBook = bookToBeRemoved => {
     this.setState(prevState => ({   
       books : 
@@ -26,16 +34,26 @@ class App extends Component {
     }))
   }
 
-  updateShelf = (value, book) => {
+ /**
+  * @description Modifies books state when book's shelf is changed
+  * @param {string} newShelf
+  * @param {object} book
+  */
+  updateShelf = (newShelf, book) => {
     this.removeBook(book);
-    if (value !== 'none') {
-       book.shelf = value;
+    if (newShelf !== 'none') {
+       book.shelf = newShelf;
        this.addBook(book);
     }
 
-    BooksAPI.update(book, value);
+    BooksAPI.update(book, newShelf);
   }
 
+ /**
+  * @description Gets shelf of selected book
+  * @param {object} selectedBook
+  * @returns {string} Shelf of selected book
+  */
   getShelf = selectedBook => {
     const {books} = this.state;
 

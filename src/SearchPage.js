@@ -9,6 +9,10 @@ class SearchPage extends Component {
     searchBookResults: []
   }
 
+ /**
+  * @description Calls BooksAPI and updates state of searchBookResults
+  * @param {string} query
+  */
   updateSearchBookResults = query => {
     if (query) {
       BooksAPI.search(query).then(books => this.setState({searchBookResults : books }));
@@ -17,10 +21,18 @@ class SearchPage extends Component {
     }
   }
 
+ /**
+  * @description Updated state of query
+  * @param {string} query
+  */
   updateQueryString = query => {
      this.setState({query});
   }
 
+ /**
+  * @description Updated state of query and searchBookResults 
+  * @param {string} query
+  */
   updateQuery = query => {
     this.updateQueryString(query);
     this.updateSearchBookResults(query);

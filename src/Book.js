@@ -6,7 +6,11 @@ class Book extends Component {
 		shelf : this.props.book.shelf ? this.props.book.shelf : 'none'
 	}
 
-	getShelf = (value, book) => {
+   /**
+	* @description Calls getShelf to get book shelf and updates shelf state
+	* @param {object} book
+	*/
+	getShelf = (book) => {
 		const shelf = this.props.getShelf(book);
 		this.setState({ shelf });
 	}
@@ -23,7 +27,7 @@ class Book extends Component {
 						</div>
 						<div className="book-shelf-changer">
 							<select onChange={event => updateShelf(event.target.value, book)}
-									onMouseEnter={event => this.getShelf(event.target.value, book)}
+									onMouseEnter={event => this.getShelf(book)}
 									value={this.state.shelf} >
 								<option value="move" disabled>Move to...</option>
 								<option value="currentlyReading">Currently Reading</option>
