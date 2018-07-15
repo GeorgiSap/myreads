@@ -11,7 +11,11 @@ class SearchForm extends Component {
   }
 
   updateSearchBookResults = (query) => {
-    BooksAPI.search(query).then(books => this.setState({searchBookResults : books })) 
+    if (query) {
+      BooksAPI.search(query).then(books => this.setState({searchBookResults : books })) 
+    } else {
+      this.setState({searchBookResults : null })
+    }
   }
 
   updateQueryString = (query) => {
@@ -20,7 +24,6 @@ class SearchForm extends Component {
 
   updateQuery = (query) => {
     this.updateQueryString(query);
-    if (query)
     this.updateSearchBookResults(query);
   }
 
